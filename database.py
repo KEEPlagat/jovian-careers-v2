@@ -14,6 +14,7 @@ engine = create_engine(DATABASE_URL, connect_args=ssl_args)
 
 try:
   with engine.connect() as conn:
-    print("Connected successfully!")
+   print("Connected successfully!")
+
 except Exception as ex:
   print(f"Connection failed: {str(ex)}")
