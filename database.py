@@ -1,16 +1,7 @@
 from sqlalchemy import create_engine, text
 import os
 
-# Get database credentials from environment variables
-DATABASE = 'joviancareers'
-USER = 'eolyi4s9kr15eryqb7im'
-PASSWORD = 'pscale_pw_CkdJKS61wddkMcTnhdairHJZdCTOyVkLPUVQYInSdPA'
-HOST = 'aws.connect.psdb.cloud'
-PORT = 3306  # default port for MySQL
-
-# Build the database URL
-DATABASE_URL = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-
+DATABASE_URL = os.getenv('DB_URL')
 # Set SSL parameters
 ssl_args = {"ssl": {"ssl_ca": "/etc/ssl/cert.pem"}}
 # create the engine
