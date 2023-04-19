@@ -15,3 +15,16 @@ def load_jobs_from_db():
     result = conn.execute(stmt)
     jobs = [row for row in result]
   return jobs
+
+
+#load single job
+def load_job_from_db(id):
+  with engine.connect() as conn:
+    result = conn.execute(text("SELECT * FROM jobs WHERE id = :id"),
+                          {"id": id})
+    row = result.fetchone()
+    if row is None:
+      return None
+    else:
+      columns = result.keys()
+      return dict(zip(columns, row))
